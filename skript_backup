@@ -1,0 +1,8 @@
+#!/bin/sh
+PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+
+echo "------------------------------------------" >> /backup2/logs/log_bd_tag
+echo "Start backup_"$(date "+%d-%m-%Y") $(date "+%T") >> /backup2/logs/log_bd_tag
+pg_dump -p ****(порт скрыт) tag | gzip >/backup2/BD_tag/$(date "+%Y%m%d")_tag_$(date "+%d-%m-%Y")__$(date "+%T")_name_server_$(hostname).dump.gz
+echo "Backup completed_"$(date "+%d-%m-%Y") $(date "+%T") >> /backup2/logs/log_bd_tag
+echo "------------------------------------------" >> /backup2/logs/log_bd_tag
